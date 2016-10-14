@@ -1,0 +1,35 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{76DF9041-A65B-0915-D075-D507E04FC70A}") = "DodgeGame", "Assembly-CSharp-firstpass.csproj", "{24BE7A91-824A-E9C6-6504-577ED8DF274E}"
+EndProject
+Project("{76DF9041-A65B-0915-D075-D507E04FC70A}") = "DodgeGame", "Assembly-CSharp.csproj", "{7C3E3DB9-57D4-0642-8015-AA34A1903036}"
+EndProject
+Project("{76DF9041-A65B-0915-D075-D507E04FC70A}") = "DodgeGame", "Assembly-CSharp-Editor.csproj", "{5E5C40A2-A1C3-13B5-2825-6E53A7B01C5C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{24BE7A91-824A-E9C6-6504-577ED8DF274E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24BE7A91-824A-E9C6-6504-577ED8DF274E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24BE7A91-824A-E9C6-6504-577ED8DF274E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24BE7A91-824A-E9C6-6504-577ED8DF274E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C3E3DB9-57D4-0642-8015-AA34A1903036}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C3E3DB9-57D4-0642-8015-AA34A1903036}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C3E3DB9-57D4-0642-8015-AA34A1903036}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C3E3DB9-57D4-0642-8015-AA34A1903036}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E5C40A2-A1C3-13B5-2825-6E53A7B01C5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E5C40A2-A1C3-13B5-2825-6E53A7B01C5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E5C40A2-A1C3-13B5-2825-6E53A7B01C5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E5C40A2-A1C3-13B5-2825-6E53A7B01C5C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
