@@ -34,8 +34,15 @@ public class GameControllerScript : MonoBehaviour {
     private GameObject GenerateHero()
     {
         GameObject newHero = Instantiate(baseHero.gameObject) as GameObject;
- //       newHero.Randomize();
+        //newHero.Randomize();
         return newHero;
+    }
+
+    private void GenerateBackup()
+    {
+        GameObject newHero = GenerateHero();
+        backup.Add(newHero);
+        //animation
     }
 
     private void StartFight()
@@ -44,18 +51,46 @@ public class GameControllerScript : MonoBehaviour {
         //open gui
     }
 
-    private void NewRound()
+    public void NewRound()
     {
         for(int i = 0; i < 4; i++)
         {
            if(party[i] == null)
                 ReplaceHero(i);
         }
+        currEnemy.Attack();
+    }
 
+    public void RemoveHero(int partySlot)
+    {
+        party[partySlot] = null;
     }
 
     private void ReplaceHero(int partySlot)
     {
         throw new NotImplementedException();
+    }
+
+    private void EndFight()
+    {
+        enemies.RemoveAt(0);
+        for(int i = 0; i < currEnemy.GetBackupReward(); i++)
+        {
+            GenerateBackup();
+        }
+        if(enemies.Count == 0)
+        {
+            //YOU WIN
+        }
+        else
+        {
+            currEnemy = enemies[0].GetComponent<EnemyScript>();
+            StartFight();
+        }
+    }
+
+    private void GameOver()
+    {
+        //Change to game over scene
     }
 }
