@@ -7,21 +7,21 @@ public class HeroScript : MonoBehaviour {
     public GameControllerScript controller;
     public float invulnCooldown;
     public float invulnTime;
+    public KeyCode dodgeKey;
 
+    private Animator anim;
     private string heroName;
-    private KeyCode dodgeKey;
     private int partyPos;
     private bool invuln;
-    private bool canInvuln;
+    private bool canInvuln = true;
 
 	void Start () {
-	
+        anim = gameObject.GetComponent<Animator>();
 	}
 	
 	void Update () {
 	    if(Input.GetKeyDown(dodgeKey) && canInvuln)
         {
-            //Dodge animation
             StartCoroutine(Dodge());
         }
 	}
@@ -50,8 +50,10 @@ public class HeroScript : MonoBehaviour {
     {
         invuln = true;
         canInvuln = false;
+        anim.SetBool("Dodge", true);
         yield return new WaitForSeconds(invulnTime);
         invuln = false;
+        anim.SetBool("Dodge", false);
         yield return new WaitForSeconds(invulnCooldown);
         canInvuln = true;
     }

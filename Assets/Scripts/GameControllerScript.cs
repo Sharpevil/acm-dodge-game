@@ -6,9 +6,12 @@ using System;
 public class GameControllerScript : MonoBehaviour {
 
     private GameObject[] party = new GameObject[4];
+    private KeyCode[] dodgeKeys = new KeyCode[4] {KeyCode.Q, KeyCode.W, KeyCode.E, KeyCode.R};
     private List<GameObject> backup;
     private List<GameObject> enemies;
     private EnemyScript currEnemy;
+    private Vector3 heroPos = new Vector3(-6, 4.5f, 0);
+
 
     public HeroScript baseHero;
 
@@ -28,6 +31,9 @@ public class GameControllerScript : MonoBehaviour {
         {
             GameObject newHero = GenerateHero();
             party[i] = newHero;
+            newHero.transform.position = heroPos - new Vector3(0, (i * 2.33f), 0);
+            newHero.GetComponent<HeroScript>().dodgeKey = dodgeKeys[i];
+            newHero.SetActive(true);
         }
     }
 
@@ -68,7 +74,19 @@ public class GameControllerScript : MonoBehaviour {
 
     private void ReplaceHero(int partySlot)
     {
-        throw new NotImplementedException();
+        if (backup.Count > 0)
+        {
+            party[partySlot] = backup[0];
+            backup.RemoveAt(0);
+            //animate party member running in
+        }
+        else
+        {
+            if(party[0] == null && party[1] == null && party[2] == null && party[3] == null)
+            {
+                GameOver();
+            }
+        }
     }
 
     private void EndFight()
