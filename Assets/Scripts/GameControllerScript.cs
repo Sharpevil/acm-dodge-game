@@ -5,6 +5,9 @@ using System;
 
 public class GameControllerScript : MonoBehaviour {
 
+    public bool debug;
+    public KeyCode debugRegenParty;
+
     private GameObject[] party = new GameObject[4];
     private KeyCode[] dodgeKeys = new KeyCode[4] {KeyCode.Q, KeyCode.W, KeyCode.E, KeyCode.R};
     private List<GameObject> backup;
@@ -22,7 +25,14 @@ public class GameControllerScript : MonoBehaviour {
 
     void Update()
     {
-
+        if(Input.GetKeyDown(debugRegenParty) && debug)
+        {
+            foreach(GameObject hero in party)
+            {
+                hero.GetComponent<HeroScript>().Death();
+            }
+            GenerateParty();
+        }
     }
 
     private void GenerateParty()

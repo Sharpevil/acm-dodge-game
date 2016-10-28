@@ -9,13 +9,16 @@ public class HeroScript : MonoBehaviour {
     public float invulnTime;
     public KeyCode dodgeKey;
 
+    private Rigidbody2D rb2d;
     private Animator anim;
     private string heroName;
+    private float destroyDelay = 3f;
     private int partyPos;
     private bool invuln;
     private bool canInvuln = true;
 
 	void Start () {
+        rb2d = gameObject.GetComponent<Rigidbody2D>();
         anim = gameObject.GetComponent<Animator>();
 	}
 	
@@ -26,18 +29,22 @@ public class HeroScript : MonoBehaviour {
         }
 	}
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
+        print("yahoo");
         if (col.gameObject.tag == "Hurt")
         {
             Death();
         }
     }
 
-    private void Death()
+    public void Death()
     {
-        //Death animation
+        rb2d.gravityScale = 2f;
+        rb2d.AddForce(new Vector2(-10, 150));
+        rb2d.AddTorque(UnityEngine.Random.Range(-30f, 30f));
         controller.RemoveHero(partyPos);
+        Destroy(gameObject, destroyDelay);
     }
 
     void Randomize()
