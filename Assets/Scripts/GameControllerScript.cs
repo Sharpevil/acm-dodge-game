@@ -29,7 +29,10 @@ public class GameControllerScript : MonoBehaviour {
         {
             foreach(GameObject hero in party)
             {
-                hero.GetComponent<HeroScript>().Death();
+                if(hero != null)
+                {
+                    hero.GetComponent<HeroScript>().Death();
+                }
             }
             GenerateParty();
         }
@@ -120,5 +123,10 @@ public class GameControllerScript : MonoBehaviour {
     private void GameOver()
     {
         //Change to game over scene
+    }
+
+    public void GetHeroLoc(int partyPos)
+    {
+
     }
 }
